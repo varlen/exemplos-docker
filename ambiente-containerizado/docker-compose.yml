@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  smtp-server:
+    ports:
+      - '5080:80'
+    restart: always 
+    image: maildev/maildev:latest
+
+  mailer:
+    build:
+      context: ./mail-sender
+    restart: on-failure
+    image: cyberspaco/mailer:latest
+    environment:
+      - SMTP_HOSTNAME=smtp-server
+      - MAIL_DEFAULT_SENDER=usuario@email.com
+    ports:
+      - '5081:5000'
+  
+  

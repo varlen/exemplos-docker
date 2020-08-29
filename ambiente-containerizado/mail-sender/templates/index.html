@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Envio de E-mail</title>
+    </head>
+    <body>
+        <h1>Envio de E-mail</h1>
+        {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        {% endwith %}
+        <form action="" method="post">
+            <p>Destinatário: <input type="text" name="recipient"></p>
+            <p><input type="submit" value="Enviar e-mail"></p>
+        </form>
+    </body>
+</html>
